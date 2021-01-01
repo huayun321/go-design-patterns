@@ -7,54 +7,94 @@ type BuildProcess interface {
 	GetVehicle() VehicleProduct
 }
 
-type ManufacturingDirector struct{}
+//Director
+type ManufacturingDirector struct {
+	builder BuildProcess
+}
 
 func (f *ManufacturingDirector) Construct() {
-	//implement here
+	f.builder.SetWheels().SetSeats().SetStructure()
 }
 
 func (f *ManufacturingDirector) SetBuilder(b BuildProcess) {
-	//implement here
+	f.builder = b
 }
 
+//Product
 type VehicleProduct struct {
 	Wheels    int
 	Seats     int
 	Structure string
 }
 
-type CarBuilder struct{}
+//A Builder of type car
+type CarBuilder struct {
+	v VehicleProduct
+}
 
 func (c *CarBuilder) SetWheels() BuildProcess {
-	return nil
+	c.v.Wheels = 4
+	return c
 }
 
 func (c *CarBuilder) SetSeats() BuildProcess {
-	return nil
+	c.v.Seats = 5
+	return c
 }
 
 func (c *CarBuilder) SetStructure() BuildProcess {
-	return nil
+	c.v.Structure = "Car"
+	return c
 }
 
 func (c *CarBuilder) GetVehicle() VehicleProduct {
-	return VehicleProduct{}
+	return c.v
 }
 
-type BikeBuilder struct{}
+//A Builder of type motorbike
+type BikeBuilder struct {
+	v VehicleProduct
+}
 
 func (b *BikeBuilder) SetWheels() BuildProcess {
-	return nil
+	b.v.Wheels = 2
+	return b
 }
 
 func (b *BikeBuilder) SetSeats() BuildProcess {
-	return nil
+	b.v.Seats = 2
+	return b
 }
 
 func (b *BikeBuilder) SetStructure() BuildProcess {
-	return nil
+	b.v.Structure = "Motorbike"
+	return b
 }
 
 func (b *BikeBuilder) GetVehicle() VehicleProduct {
-	return VehicleProduct{}
+	return b.v
+}
+
+//A Builder of type bus
+type BusBuilder struct {
+	v VehicleProduct
+}
+
+func (b *BusBuilder) SetWheels() BuildProcess {
+	b.v.Wheels = 8
+	return b
+}
+
+func (b *BusBuilder) SetSeats() BuildProcess {
+	b.v.Seats = 30
+	return b
+}
+
+func (b *BusBuilder) SetStructure() BuildProcess {
+	b.v.Structure = "Bus"
+	return b
+}
+
+func (b *BusBuilder) GetVehicle() VehicleProduct {
+	return b.v
 }
