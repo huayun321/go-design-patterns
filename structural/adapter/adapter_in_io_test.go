@@ -7,7 +7,7 @@ import (
 )
 
 func TestIO(t *testing.T) {
-	f, err := os.OpenFile("pipe.txt", os.O_APPEND|os.O_WRONLY, os.ModeAppend)
+	f, err := os.OpenFile("/tmp/pipe", os.O_APPEND|os.O_WRONLY, os.ModeAppend)
 	defer f.Close()
 	if err != nil {
 		t.Fatal(err)
