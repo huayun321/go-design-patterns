@@ -1,0 +1,7 @@
+@startuml
+Client -> Program: make a director
+Client -> Program: set builder to director
+Client -> Program: construct
+Client -> Program: get vehicle
+Program -> Client: return a vehicle
+@enduml

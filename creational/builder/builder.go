@@ -20,6 +20,10 @@ func (f *ManufacturingDirector) SetBuilder(b BuildProcess) {
 	f.builder = b
 }
 
+func (f *ManufacturingDirector) GetProduct() VehicleProduct {
+	return f.builder.GetVehicle()
+}
+
 //Product
 type VehicleProduct struct {
 	Wheels    int

@@ -39,6 +39,7 @@ namespace builder {
 
         + Construct() 
         + SetBuilder(b BuildProcess) 
+        + GetProduct() VehicleProduct
 
     }
     class VehicleProduct << (S,Aquamarine) >> {
