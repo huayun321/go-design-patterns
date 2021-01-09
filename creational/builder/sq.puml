@@ -1,4 +1,5 @@
 @startuml
+actor Client
 Client -> Program: make a director
 Client -> Program: set builder to director
 Client -> Program: construct
