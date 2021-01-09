@@ -1,0 +1,25 @@
+@startuml
+namespace factory {
+    class CashPM << (S,Aquamarine) >> {
+        + Pay(amount float32) string
+
+    }
+    class DebitPM << (S,Aquamarine) >> {
+        + Pay(amount float32) string
+
+    }
+    class NewDebitCardPM << (S,Aquamarine) >> {
+        + Pay(amount float32) string
+
+    }
+    interface PayMethod  {
+        + Pay(amount float32) string
+
+    }
+}
+
+"factory.PayMethod" <|-- "factory.CashPM"
+"factory.PayMethod" <|-- "factory.DebitPM"
+"factory.PayMethod" <|-- "factory.NewDebitCardPM"
+
+@enduml

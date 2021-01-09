@@ -1,0 +1,65 @@
+@startuml
+namespace abstract_factory {
+    interface Car  {
+        + GetDoors() int
+
+    }
+    class CarFactory << (S,Aquamarine) >> {
+        + GetVehicle(v int) (Vehicle, error)
+
+    }
+    class CruiseMotorbike << (S,Aquamarine) >> {
+        + GetType() int
+        + GetWheels() int
+        + GetSeats() int
+
+    }
+    class FamiliarCar << (S,Aquamarine) >> {
+        + GetDoors() int
+        + GetWheels() int
+        + GetSeats() int
+
+    }
+    class LuxuryCar << (S,Aquamarine) >> {
+        + GetDoors() int
+        + GetWheels() int
+        + GetSeats() int
+
+    }
+    interface Motorbike  {
+        + GetType() int
+
+    }
+    class MotorbikeFactory << (S,Aquamarine) >> {
+        + GetVehicle(v int) (Vehicle, error)
+
+    }
+    class SportMotorbike << (S,Aquamarine) >> {
+        + GetType() int
+        + GetWheels() int
+        + GetSeats() int
+
+    }
+    interface Vehicle  {
+        + GetWheels() int
+        + GetSeats() int
+
+    }
+    interface VehicleFactory  {
+        + GetVehicle(v int) (Vehicle, error)
+
+    }
+}
+
+"abstract_factory.VehicleFactory" <|-- "abstract_factory.CarFactory"
+"abstract_factory.Motorbike" <|-- "abstract_factory.CruiseMotorbike"
+"abstract_factory.Vehicle" <|-- "abstract_factory.CruiseMotorbike"
+"abstract_factory.Car" <|-- "abstract_factory.FamiliarCar"
+"abstract_factory.Vehicle" <|-- "abstract_factory.FamiliarCar"
+"abstract_factory.Car" <|-- "abstract_factory.LuxuryCar"
+"abstract_factory.Vehicle" <|-- "abstract_factory.LuxuryCar"
+"abstract_factory.VehicleFactory" <|-- "abstract_factory.MotorbikeFactory"
+"abstract_factory.Motorbike" <|-- "abstract_factory.SportMotorbike"
+"abstract_factory.Vehicle" <|-- "abstract_factory.SportMotorbike"
+
+@enduml

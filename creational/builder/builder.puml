@@ -1,0 +1,56 @@
+@startuml
+namespace builder {
+    class BikeBuilder << (S,Aquamarine) >> {
+        - v VehicleProduct
+
+        + SetWheels() BuildProcess
+        + SetSeats() BuildProcess
+        + SetStructure() BuildProcess
+        + GetVehicle() VehicleProduct
+
+    }
+    interface BuildProcess  {
+        + SetWheels() BuildProcess
+        + SetSeats() BuildProcess
+        + SetStructure() BuildProcess
+        + GetVehicle() VehicleProduct
+
+    }
+    class BusBuilder << (S,Aquamarine) >> {
+        - v VehicleProduct
+
+        + SetWheels() BuildProcess
+        + SetSeats() BuildProcess
+        + SetStructure() BuildProcess
+        + GetVehicle() VehicleProduct
+
+    }
+    class CarBuilder << (S,Aquamarine) >> {
+        - v VehicleProduct
+
+        + SetWheels() BuildProcess
+        + SetSeats() BuildProcess
+        + SetStructure() BuildProcess
+        + GetVehicle() VehicleProduct
+
+    }
+    class ManufacturingDirector << (S,Aquamarine) >> {
+        - builder BuildProcess
+
+        + Construct() 
+        + SetBuilder(b BuildProcess) 
+
+    }
+    class VehicleProduct << (S,Aquamarine) >> {
+        + Wheels int
+        + Seats int
+        + Structure string
+
+    }
+}
+
+"builder.BuildProcess" <|-- "builder.BikeBuilder"
+"builder.BuildProcess" <|-- "builder.BusBuilder"
+"builder.BuildProcess" <|-- "builder.CarBuilder"
+
+@enduml

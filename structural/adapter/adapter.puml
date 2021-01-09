@@ -1,0 +1,33 @@
+@startuml
+namespace adapter {
+    class Counter << (S,Aquamarine) >> {
+        + Writer io.Writer
+
+        + Count(n uint64) (uint64, error)
+
+    }
+    interface LegacyPrinter  {
+        + Print(s string) string
+
+    }
+    interface ModernPrinter  {
+        + PrintStored() string
+
+    }
+    class MyLegacyPrinter << (S,Aquamarine) >> {
+        + Print(s string) string
+
+    }
+    class PrinterAdapter << (S,Aquamarine) >> {
+        + OldPrinter LegacyPrinter
+        + Msg string
+
+        + PrintStored() string
+
+    }
+}
+
+"adapter.LegacyPrinter" <|-- "adapter.MyLegacyPrinter"
+"adapter.ModernPrinter" <|-- "adapter.PrinterAdapter"
+
+@enduml

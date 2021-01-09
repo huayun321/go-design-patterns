@@ -1,0 +1,12 @@
+@startuml
+namespace singleton {
+    class singleton << (S,Aquamarine) >> {
+        - count int
+
+        + AddOne() int
+
+    }
+}
+
+
+@enduml

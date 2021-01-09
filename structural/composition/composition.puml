@@ -1,0 +1,56 @@
+@startuml
+namespace composition {
+    class Animal << (S,Aquamarine) >> {
+        + Eat() 
+
+    }
+    class Athlete << (S,Aquamarine) >> {
+        + Train() 
+
+    }
+    class CompositeSwimmerA << (S,Aquamarine) >> {
+        + MyAthlete Athlete
+        + MySwim *<font color=blue>func</font>() 
+
+    }
+    class CompositeSwimmerB << (S,Aquamarine) >> {
+    }
+    class Parent << (S,Aquamarine) >> {
+        + SomeField int
+
+    }
+    class Shark << (S,Aquamarine) >> {
+        + Swim <font color=blue>func</font>() 
+
+    }
+    class Son << (S,Aquamarine) >> {
+        + P Parent
+
+    }
+    interface Swimmer  {
+        + Swim() 
+
+    }
+    class SwimmerImplementor << (S,Aquamarine) >> {
+        + Swim() 
+
+    }
+    interface Trainer  {
+        + Train() 
+
+    }
+    class Tree << (S,Aquamarine) >> {
+        + LeafValue int
+        + Right *Tree
+        + Left *Tree
+
+    }
+}
+"composition.Swimmer" *-- "composition.CompositeSwimmerB"
+"composition.Trainer" *-- "composition.CompositeSwimmerB"
+"composition.Animal" *-- "composition.Shark"
+
+"composition.Trainer" <|-- "composition.Athlete"
+"composition.Swimmer" <|-- "composition.SwimmerImplementor"
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+namespace prototype {
+    interface ItemInfoGetter  {
+        + GetInfo() string
+
+    }
+    class Shirt << (S,Aquamarine) >> {
+        + Price float32
+        + SKU string
+        + Color ShirtColor
+
+        + GetInfo() string
+        + GetPrice() float32
+
+    }
+    interface ShirtCloner  {
+        + GetClone(s int) (ItemInfoGetter, error)
+
+    }
+    class ShirtColor << (S,Aquamarine) >> {
+        + String() string
+
+    }
+    class ShirtsCache << (S,Aquamarine) >> {
+        + GetClone(m int) (ItemInfoGetter, error)
+
+    }
+    class prototype.ShirtColor << (T, #FF7700) >>  {
+    }
+}
+
+"prototype.ItemInfoGetter" <|-- "prototype.Shirt"
+"prototype.ShirtCloner" <|-- "prototype.ShirtsCache"
+
+"__builtin__.byte" #.. "prototype.ShirtColor"
+@enduml
