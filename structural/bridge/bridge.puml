@@ -1,0 +1,42 @@
+@startuml
+namespace bridge {
+    class NormalPrinter << (S,Aquamarine) >> {
+        + Msg string
+        + Printer PrinterAPI
+
+        + Print() error
+
+    }
+    class PacktPrinter << (S,Aquamarine) >> {
+        + Msg string
+        + Printer PrinterAPI
+
+        + Print() error
+
+    }
+    interface PrinterAPI  {
+        + PrintMessage( string) error
+
+    }
+    class PrinterAPI1 << (S,Aquamarine) >> {
+        + PrintMessage(msg string) error
+
+    }
+    class PrinterAPI2 << (S,Aquamarine) >> {
+        + Writer io.Writer
+
+        + PrintMessage(msg string) error
+
+    }
+    interface PrinterAbstraction  {
+        + Print() error
+
+    }
+}
+
+"bridge.PrinterAbstraction" <|-- "bridge.NormalPrinter"
+"bridge.PrinterAbstraction" <|-- "bridge.PacktPrinter"
+"bridge.PrinterAPI" <|-- "bridge.PrinterAPI1"
+"bridge.PrinterAPI" <|-- "bridge.PrinterAPI2"
+
+@enduml
