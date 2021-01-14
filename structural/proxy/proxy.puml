@@ -1,0 +1,27 @@
+@startuml
+namespace proxy {
+    class User << (S,Aquamarine) >> {
+        + ID int32
+
+    }
+    interface UserFinder  {
+        + FindUser(id int32) (User, error)
+
+    }
+    class UserListProxy << (S,Aquamarine) >> {
+        + SomeDatabase *UserList
+        + StackCache UserList
+        + StackCapacity int
+        + DidLastSearchUsedCache bool
+
+        + FindUser(id int32) (User, error)
+
+    }
+    class proxy.UserList << (T, #FF7700) >>  {
+    }
+}
+
+"proxy.UserFinder" <|-- "proxy.UserListProxy"
+
+"proxy.[]User" #.. "proxy.UserList"
+@enduml

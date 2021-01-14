@@ -8,3 +8,5 @@ puml:
 	goplantuml -recursive structural/adapter > structural/adapter/adapter.puml
 	goplantuml -recursive structural/composition > structural/composition/composition.puml
 	goplantuml -recursive structural/bridge > structural/bridge/bridge.puml
+
+	goplantuml -recursive structural/proxy > structural/proxy/proxy.puml
