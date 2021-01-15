@@ -8,11 +8,19 @@ namespace proxy {
         + FindUser(id int32) (User, error)
 
     }
+    class UserList << (S,Aquamarine) >> {
+        - addUser(newUser User) 
+
+        + FindUser(id int32) (User, error)
+
+    }
     class UserListProxy << (S,Aquamarine) >> {
         + SomeDatabase *UserList
         + StackCache UserList
         + StackCapacity int
         + DidLastSearchUsedCache bool
+
+        - addUserToStack(user User) 
 
         + FindUser(id int32) (User, error)
 
@@ -21,6 +29,7 @@ namespace proxy {
     }
 }
 
+"proxy.UserFinder" <|-- "proxy.UserList"
 "proxy.UserFinder" <|-- "proxy.UserListProxy"
 
 "proxy.[]User" #.. "proxy.UserList"
